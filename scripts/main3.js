@@ -1,5 +1,4 @@
-require('../styles/app.css');
-
+require('bootstrapcss');
 var img2 = $('<img>');
 img2.attr('src',require("../images/error409.png") );
 $('body').append(img2);
