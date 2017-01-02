@@ -1,0 +1,30 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  @include width(100%);
+  background:$red;
+  line-height:40px;
+  .item {
+    order: 1;
+    color: $white;
+    .iconfont{
+      font-size:22px;
+    }
+  }
+  .message {
+    padding-left: 10px;
+  }
+  .search {
+    padding-right: 10px;
+  }
+  .title{
+    .iconfont{
+      font-size:16px;
+      cursor:pointer;
+    }
+  }
+}

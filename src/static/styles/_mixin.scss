@@ -1,0 +1,15 @@
+$white:#fff;
+$gray:#f4f5f6;
+$black:#000;
+$red:#d43d3d;
+@mixin width($num){
+  width: $num;
+}
+@mixin pLR($num){
+  padding-left: $num;
+  padding-right: $num;
+}
+@mixin bgUrl($name){
+  background:url('../../../static/images/'+$name) no-repeat center;
+  background-size:cover;
+}

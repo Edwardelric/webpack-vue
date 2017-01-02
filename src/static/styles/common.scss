@@ -1,0 +1,55 @@
+body {
+  font-family: Microsoft YaHei, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+.router-link-active {
+  color: #d43d3d !important;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.font14 {
+  font-size: 14px;
+}
+
+.font16 {
+  font-size: 16px;
+}
+
+.font20 {
+  font-size: 20px;
+}
+.clearfix{
+  display:inline-block;
+  &:after{
+    display:block;
+    content:'.';
+    height:0;
+    line-height:0;
+    clear:both;
+    visibility: hidden;
+  }
+}
