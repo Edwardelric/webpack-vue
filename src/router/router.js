@@ -5,6 +5,9 @@ import society from 'components/content/society/society';
 import entertainment from 'components/content/entertainment/entertainment';
 import military from 'components/content/military/military';
 import tech from 'components/content/tech/tech';
+import goods from 'components/content/intro/goods/goods';
+import ratings from 'components/content/intro/ratings/ratings';
+import seller from 'components/content/intro/seller/seller';
 
 const routes = [
   {
@@ -12,7 +15,31 @@ const routes = [
     component: intro,
     meta: {
       title: '推荐内容'
-    }
+    },
+    redirect: '/intro/goods',
+    children: [
+      {
+        path: '/intro/goods',
+        component: goods,
+        meta: {
+          title: '商品'
+        }
+      },
+      {
+        path: '/intro/ratings',
+        component: ratings,
+        meta: {
+          title: '评论'
+        }
+      },
+      {
+        path: '/intro/seller',
+        component: seller,
+        meta: {
+          title: '商家'
+        }
+      }
+    ]
   },
   {
     path: '/video',

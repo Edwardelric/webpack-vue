@@ -55,6 +55,14 @@
       <span></span>
       {{seller.data.bulletin}}
     </div>
+    <div class="tab">
+      <router-link to="/intro/goods">商品</router-link>
+      <router-link to="/intro/ratings">评论</router-link>
+      <router-link to="/intro/seller">商家</router-link>
+    </div>
+    <div class="sub-main">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 

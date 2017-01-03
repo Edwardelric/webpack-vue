@@ -28,3 +28,8 @@ new Vue({
   router,
   components: {App}
 });
+// new Vue({
+//   el: '#app',
+//   router,
+//   render: h => h(App)
+// });
