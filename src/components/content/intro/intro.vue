@@ -61,7 +61,7 @@
       <router-link to="/intro/seller">商家</router-link>
     </div>
     <div class="sub-main">
-      <router-view></router-view>
+      <router-view :seller="seller"></router-view>
     </div>
   </div>
 </template>

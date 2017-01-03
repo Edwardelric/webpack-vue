@@ -85,7 +85,7 @@ const routes = [
   },
   {
     path: '/',
-    component: intro
+    redirect: '/intro/goods'
   }
 ];
 
