@@ -16,8 +16,8 @@
         </div>
       </div>
       <p class="add-button" @click="detailShow=!detailShow">
-        <i class="iconfont icon-add"></i>
         <span>{{seller.data.supports.length}}</span>
+        <i class="iconfont icon-xiangyoujiantou"></i>
       </p>
       <div class="background">
         <img :src="seller.data.avatar" width="100%" height="100%"/>
@@ -133,8 +133,8 @@
       overflow:auto;
       background:rgba(7,17,27,0.8);
       .detail-wrapper{
+        height:auto;
         min-height:100%;
-        overflow:hidden;
         .detail-main{
           margin-top:64px;
           padding-bottom:64px;
@@ -148,10 +148,11 @@
       }
       .detail-close{
         position:relative;
-        width:32px;
-        height:32px;
         clear:both;
-        margin-top:-32px;
+        width:100%;
+        height:64px;
+        margin-top:-64px;
+        background:red;
         font-size:32px;
       }
     }
