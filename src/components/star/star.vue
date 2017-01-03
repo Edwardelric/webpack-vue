@@ -1,9 +1,9 @@
 <template>
   <div class="star-wrapper">
     <span v-for="item in startType" :class="item" track-by="$index">
-      <i class="iconfont icon-star1" v-if="item=='on'"></i>
-      <i class="iconfont icon-star" v-if="item=='off'"></i>
-      <i class="iconfont icon-starHalf" v-if="item=='half'"></i>
+      <i class="iconfont icon-star1" v-if="item =='on'"></i>
+      <i class="iconfont icon-star" v-if="item =='off'"></i>
+      <i class="iconfont icon-starHalf" v-if="item =='half'"></i>
     </span>
   </div>
 </template>
@@ -26,13 +26,11 @@
         for (let i = 0; i < integer; i++) {
           arr.push(STAR_ON);
         }
-        console.log(decimal);
         if (decimal && decimal >= 0.5) {
           arr.push(STAR_HALF);
         } else if (decimal && decimal < 0.5) {
           arr.push(STAR_OFF);
         }
-        console.log(arr);
         return arr;
       }
     }
