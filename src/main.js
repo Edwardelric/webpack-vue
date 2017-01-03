@@ -4,7 +4,7 @@ import VueRouter from 'vue-router';
 import routes from './router/router';
 import VueResource from 'vue-resource';
 
-import 'static/styles/iconfont.scss';
+import 'static/styles/iconfont/iconfont.scss';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);

@@ -9,6 +9,6 @@
 </script>
 
 <style lang="scss" scoped>
-  @import 'src/static/styles/_mixin';
+  @import 'src/static/styles/helper/_mixin';
   @import 'src/static/styles/footer/footer';
 </style>

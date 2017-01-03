@@ -18,7 +18,7 @@
 </script>
 
 <style lang="scss">
-  @import 'src/static/styles/_mixin';
+  @import 'src/static/styles/helper/_mixin';
   @import 'src/static/styles/header/header';
 </style>
 

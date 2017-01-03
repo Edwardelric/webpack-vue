@@ -25,12 +25,12 @@
       <div class="detail" v-show="detailShow">
         <div class="detail-wrapper clearfix">
           <div class="detail-main">
-            <h1 class="name"></h1>
+            <h1 class="name">{{seller.data.name}}</h1>
+            <star :score="seller.data.score"></star>
           </div>
         </div>
-        <div class="detail-close">
-          close
-          <i class="iconfont iconfont-add">close</i>
+        <div class="detail-close" @click="detailShow = !detailShow">
+          <i class="iconfont icon-tubiao06"></i>
         </div>
       </div>
     </div>
@@ -42,6 +42,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import star from 'components/star/star';
   export default {
     props: {
       seller: {
@@ -51,15 +52,18 @@
     data() {
       return {
         typeList: ['decrease', 'disaccount', 'guarentee'],
-        detailShow: false
+        detailShow: true
       };
     },
-    methods: {}
+    methods: {},
+    components: {
+      star
+    }
   };
 </script>
 
 <style lang="scss" scoped>
-  @import 'src/static/styles/_mixin';
+  @import 'src/static/styles/helper/_mixin';
   .title{
     position:relative;
     overflow:hidden;
@@ -133,6 +137,7 @@
       overflow:auto;
       background:rgba(7,17,27,0.8);
       .detail-wrapper{
+        width:100%;
         height:auto;
         min-height:100%;
         .detail-main{
@@ -143,6 +148,8 @@
             text-align:center;
             font-size:16px;
             font-weight:bolder;
+            text-align:center;
+            color:$white;
           }
         }
       }
@@ -152,8 +159,12 @@
         width:100%;
         height:64px;
         margin-top:-64px;
-        background:red;
-        font-size:32px;
+        color:$white;
+        line-height:30px;
+        text-align:center;
+        .iconfont{
+          font-size:20px;
+        }
       }
     }
   }

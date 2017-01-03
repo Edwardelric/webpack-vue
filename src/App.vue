@@ -26,7 +26,7 @@
 </script>
 
 <style lang="scss">
-  @import 'static/styles/_reset';
+  @import 'static/styles/reset/_reset';
   @import 'static/styles/common.scss';
 </style>
 
