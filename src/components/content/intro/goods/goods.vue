@@ -27,7 +27,7 @@
                   <span>好评率{{food.rating}}%</span>
                 </div>
                 <div class="price">
-                  <span>RMB{{food.price}}</span>
+                  <span>¥{{food.price}}</span>
                   <span v-show="food.oldPrice"></span>
                 </div>
               </div>
@@ -40,6 +40,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+//  import BScroll from 'better-scroll';
   export default {
     props: {
       seller: {
