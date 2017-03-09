@@ -23,7 +23,7 @@ router.beforeEach((to, from, next) => {
 });
 /* eslint-disable no-new */
 new Vue({
-  template: '<App>',
+  template: '<App/>',
   router,
   components: {App}
 }).$mount('#app');
