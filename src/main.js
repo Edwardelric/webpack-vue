@@ -1,30 +1,35 @@
 import Vue from 'vue';
 import App from './App';
-import VueRouter from 'vue-router';
-import routes from './router/router';
 import VueResource from 'vue-resource';
-
+import ElementUI from 'element-ui';
+import router from './router/router';
+import store from './store';
+import 'element-ui/lib/theme-default/index.css';
 import 'static/styles/iconfont/iconfont.scss';
 
-Vue.use(VueRouter);
 Vue.use(VueResource);
+Vue.use(ElementUI);
 
-const title = '我的外卖项目';
-
-const router = new VueRouter({
-  mode: 'history',
-  routes
+Vue.directive('focus', {
+  inserted(el) {
+    el.focus();
+  }
 });
 
-router.beforeEach((to, from, next) => {
-  // 页面title拼接
-  document.title = to.meta.title ? (title + to.meta.title) : title;
-  next();
+Vue.http.interceptors.push(function(request, next) {
+  this.$store.state.isShowLoading = true;
+  next(function(response) {
+    this.$store.state.isShowLoading = false;
+    console.log(this.$store.getters.name);
+    return response;
+  });
 });
+
 /* eslint-disable no-new */
 new Vue({
   template: '<App/>',
   router,
+  store,
   components: {App}
 }).$mount('#app');
 // new Vue({
