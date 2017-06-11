@@ -1,93 +1,55 @@
-import intro from 'components/content/intro/intro';
-import video from 'components/content/video/video';
-import hot from 'components/content/hot/hot';
-import society from 'components/content/society/society';
-import entertainment from 'components/content/entertainment/entertainment';
-import military from 'components/content/military/military';
-import tech from 'components/content/tech/tech';
-import goods from 'components/content/intro/goods/goods';
-import ratings from 'components/content/intro/ratings/ratings';
-import seller from 'components/content/intro/seller/seller';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
+Vue.use(VueRouter);
+
+const title = '汽车之家';
+
+const home = r => require.ensure([], () => r(require('page/home/home')), 'home');
+const login = r => require.ensure([], () => r(require('page/login/login')), 'login');
 const routes = [
   {
-    path: '/intro',
-    component: intro,
+    path: '/home',
+    component: home,
     meta: {
-      title: '推荐内容'
-    },
-    redirect: '/intro/goods',
-    children: [
-      {
-        path: '/intro/goods',
-        component: goods,
-        meta: {
-          title: '商品'
-        }
-      },
-      {
-        path: '/intro/ratings',
-        component: ratings,
-        meta: {
-          title: '评论'
-        }
-      },
-      {
-        path: '/intro/seller',
-        component: seller,
-        meta: {
-          title: '商家'
-        }
-      }
-    ]
-  },
-  {
-    path: '/video',
-    component: video,
-    meta: {
-      title: '视频内容'
+      title: '汽车之家首页',
+      requireAuth: false
     }
   },
   {
-    path: '/hot',
-    component: hot,
+    path: '/login',
+    component: login,
     meta: {
-      title: '热点新闻'
-    }
-  },
-  {
-    path: '/society',
-    component: society,
-    meta: {
-      title: '社会动态'
-    }
-  },
-  {
-    path: '/entertainment',
-    component: entertainment,
-    meta: {
-      title: '娱乐新闻'
-    }
-  },
-  {
-    path: '/military',
-    component: military,
-    meta: {
-      title: '军事战略'
-    }
-  },
-  {
-    path: '/tech',
-    component: tech,
-    meta: {
-      title: '科技生活'
+      title: 'vue登录页',
+      requireAuth: false
     }
   },
   {
     path: '/',
-    redirect: '/intro/goods'
+    redirect: '/home'
   }
 ];
 
-export default routes;
+const router = new VueRouter({
+  routes
+});
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title ? to.meta.title : title;
+  // 判断是否有权限可以访问详情页,如没有,则登录
+  if (window.localStorage.getItem('user')) {
+    next();
+  } else {
+    if (to.meta.requireAuth) {
+      next({
+        path: '/login'
+      });
+    } else {
+      next();
+    }
+  }
+  next();
+});
+
+export default router;
 

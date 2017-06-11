@@ -9,6 +9,7 @@
 /logs
 /target
 /src-web/app/styles
+/node
 dist
 bower_components
 /src/main/resources/generatorConfig.xml

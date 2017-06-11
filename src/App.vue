@@ -1,32 +1,30 @@
 <template>
-  <div id="app">
-    <v-header></v-header>
-    <v-content :seller="seller"></v-content>
-    <v-footer></v-footer>
-    <!--<div class="mask"></div>-->
-  </div>
+  <section class="wrapper">
+    <transition name="router-fade" mode="out-in">
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+    </transition>
+    <FooterComponent></FooterComponent>
+    <!--<Toast></Toast>-->
+    <Loading></Loading>
+  </section>
 </template>
 
 <script type="text/ecmascript-6">
-  import header from 'components/header/header';
-  import content from 'components/content/content';
-  import footer from 'components/footer/footer';
+  import FooterComponent from 'components/footercomponent';
+  import toast from 'components/toast';
+  import loading from 'components/loading';
   export default {
-    data() {
-      return {
-        seller: {}
-      };
-    },
     components: {
-      'v-header': header,
-      'v-content': content,
-      'v-footer': footer
+      'FooterComponent': FooterComponent,
+      'Toast': toast,
+      'Loading': loading
     }
   };
 </script>
 
 <style lang="scss">
-  @import 'static/styles/reset/_reset';
   @import 'static/styles/common.scss';
 </style>
 

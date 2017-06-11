@@ -1,39 +1,72 @@
 import Vue from 'vue';
+import axios from 'axios';
+import MuseUI from 'muse-ui';
+import 'muse-ui/dist/muse-ui.css';
+import moment from 'moment';
 import App from './App';
-import VueResource from 'vue-resource';
-import ElementUI from 'element-ui';
+import api from './common/api';
 import router from './router/router';
 import store from './store';
-import 'element-ui/lib/theme-default/index.css';
 import 'static/styles/iconfont/iconfont.scss';
 
-Vue.use(VueResource);
-Vue.use(ElementUI);
+Vue.use(MuseUI);
 
-Vue.directive('focus', {
-  inserted(el) {
-    el.focus();
+Vue.prototype.$http = axios;
+Vue.prototype.api = api;
+
+Vue.filter('dateFormat', function(val) {
+  return moment(val).format('YYYY年MM月DD日');
+});
+
+Vue.filter('priceFormat', function(val) {
+  var n = Math.abs(parseFloat(val)).toFixed(2);
+  return '￥' + n.replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+});
+
+axios.interceptors.request.use(
+  config => {
+    // 判断是否存在token，如果存在的话，则每个http header都加上token
+    store.dispatch('showLoading');
+    config.headers['x-cert-uid'] = window.sessionStorage.getItem('uid') || 0;
+    config.headers['x-cert-token'] = window.sessionStorage.getItem('token') || '';
+    return config;
+  },
+  err => {
+    store.dispatch('hideLoading');
+    return Promise.reject(err);
   }
-});
+);
+axios.interceptors.response.use(
+  response => {
+    store.dispatch('hideLoading');
+    return response.data;
+  },
+  err => {
+    if (err.response) {
+      switch (err.response.status) {
+        case 200:
+          router.replace({
+            path: '/login'
+          });
+          break;
+        case 404:
+          console.log('404');
+          break;
+        case 500:
+          console.log('500');
+          break;
+      }
+      store.dispatch('hideLoading');
+      return Promise.reject(err.response.data);
+    } else {
+      store.dispatch('hideLoading');
+    }
+  }
+);
 
-Vue.http.interceptors.push(function(request, next) {
-  this.$store.state.isShowLoading = true;
-  next(function(response) {
-    this.$store.state.isShowLoading = false;
-    console.log(this.$store.getters.name);
-    return response;
-  });
-});
-
-/* eslint-disable no-new */
 new Vue({
   template: '<App/>',
   router,
   store,
   components: {App}
 }).$mount('#app');
-// new Vue({
-//   el: '#app',
-//   router,
-//   render: h => h(App)
-// });

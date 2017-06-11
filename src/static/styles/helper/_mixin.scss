@@ -1,15 +1,10 @@
-$white:#fff;
-$gray:#f4f5f6;
-$black:#000;
-$red:#d43d3d;
-@mixin width($num){
-  width: $num;
-}
-@mixin pLR($num){
-  padding-left: $num;
-  padding-right: $num;
-}
-@mixin bgUrl($name){
-  background:url('../../../static/images/'+$name) no-repeat center;
-  background-size:cover;
-}
+$white: #fff;    // 白色
+$gray1: #ccc;    // 灰色
+$gray2: #969696; // 淡灰色
+$gray3: #7e8c8d; // 字体灰色
+$black1: #000;   // 黑色
+$black2: #323232;// 淡黑色
+$red1: #c00;     // 红色
+$orange1: #ff6813;// 橘红色
+$orange2: #ffb139;// 橘色
+$blue1: #3b5998;  // 蓝色

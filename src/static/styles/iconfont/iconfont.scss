@@ -1,55 +1,22 @@
-
-@font-face {font-family: "iconfont";
-  src: url('../../fonts/iconfont.eot?t=1483423280717'); /* IE9*/
-  src: url('../../fonts/iconfont.eot?t=1483423280717#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('../../fonts/iconfont.woff?t=1483423280717') format('woff'), /* chrome, firefox */
-  url('../../fonts/iconfont.ttf?t=1483423280717') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('../../fonts/iconfont.svg?t=1483423280717#iconfont') format('svg'); /* iOS 4.1- */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v21/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
 }
 
-.iconfont {
-  font-family:"iconfont" !important;
-  font-size:16px;
-  font-style:normal;
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
-
-.icon-search:before { content: "\348d"; }
-
-.icon-star:before { content: "\e62f"; }
-
-.icon-message:before { content: "\e68b"; }
-
-.icon-tubiao06:before { content: "\e692"; }
-
-.icon-add:before { content: "\e607"; }
-
-.icon-icon:before { content: "\e62b"; }
-
-.icon-star1:before { content: "\e6aa"; }
-
-.icon-iconfont5:before { content: "\e63a"; }
-
-.icon-gouwuche:before { content: "\e63f"; }
-
-.icon-erweima:before { content: "\e642"; }
-
-.icon-lajixiang:before { content: "\e645"; }
-
-.icon-lianjie:before { content: "\e646"; }
-
-.icon-shezhi:before { content: "\e64b"; }
-
-.icon-shengyin:before { content: "\e64c"; }
-
-.icon-shouye:before { content: "\e64f"; }
-
-.icon-wodejuhuasuan:before { content: "\e659"; }
-
-.icon-xiangxiajiantou:before { content: "\e65e"; }
-
-.icon-xiangyoujiantou:before { content: "\e65f"; }
-
-.icon-starHalf:before { content: "\e7fc"; }
-
