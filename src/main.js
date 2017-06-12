@@ -11,7 +11,6 @@ import 'static/styles/iconfont/iconfont.scss';
 
 Vue.use(MuseUI);
 
-Vue.prototype.$http = axios;
 Vue.prototype.api = api;
 
 Vue.filter('dateFormat', function(val) {
@@ -63,6 +62,19 @@ axios.interceptors.response.use(
     }
   }
 );
+
+Vue.prototype.$http = function(method, url, cb) {
+  if (window.localStorage.getItem('user')) {
+    router.push({path: '/login'});
+  } else {
+    axios({
+      'url': url,
+      'method': method
+    }).then((response) => {
+      cb(response);
+    });
+  }
+};
 
 new Vue({
   template: '<App/>',

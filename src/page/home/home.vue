@@ -5,7 +5,6 @@
     <ul class="flex quick-menu">
       <li v-for="(item, index) in quickMenu" :key="index">
         <mu-icon value="android"/>
-        <p>{{item.menuText}}</p>
       </li>
     </ul>
     <section class="list overflow-scroll" @touchstart="touchStart" @touchmove = "touchMove" @touchend= "touchEnd">
@@ -13,9 +12,12 @@
         <img src="../../static/images/common/loading.gif"/>
         <p ref="droploadupText">松开加载</p>
       </section>
-      <section v-for="(item, index) in [1,2,3,4,5,6,7,8,9,10]" :key="index" class="flex">
+      <section v-for="(item, index) in listData" :key="index" class="flex">
         <article>
-          <h2>2017重庆车展:斯威X3售价5.99 - 8.29万元</h2>
+          <h2>
+            斯威X3售价5.99 - 8.29万元{{item.title}}
+            <p>{{item._id}}</p>
+          </h2>
           <p>头条 <span>28评论</span></p>
         </article>
         <article>
@@ -38,7 +40,8 @@
           startY: 0,
           swipeX: false,
           swipeY: false
-        }
+        },
+        listData: []
       };
     },
     components: {
@@ -46,11 +49,8 @@
       'Swiper': Swiper
     },
     mounted() {
-      this.$http({
-        url: this.api.base + this.api.comments,
-        method: 'get'
-      }).then((response) => {
-        console.log(response);
+      this.$http('get', (this.api.base + this.api.comments), (response) => {
+        this.listData = response.data;
       });
     },
     computed: mapGetters({
@@ -105,7 +105,7 @@
       }
     }
     .list {
-      height: calc(100vh - 260px);
+      height: calc(100vh - 242px);
       margin-top: 6px;
       padding-bottom: 0;
       background: $white;

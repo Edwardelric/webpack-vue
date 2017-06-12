@@ -10,11 +10,10 @@
 /target
 /src-web/app/styles
 /node
-dist
-bower_components
+/dist
+/bower_components
 /src/main/resources/generatorConfig.xml
-node_modules
-bower_components
+/node_modules
 webpackdemo.js
 yarn.lock
 yarn-error.log

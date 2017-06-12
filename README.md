@@ -43,7 +43,7 @@
 ## 技术要点
   * RAP自动生成动态的mock数据
   * keep-alive 防止路由切换ajax的再次请求
-  * axios request,response的拦截和token设置,统一提示报错信息
+  * 封装axios,判断是否有权限,有权限就进入正常请求,无权限跳登录页
   * 请求报错信息统一存放在 axios.interceptors.response 的 err 回调里面
   * route beforeEach 拦截是否有权限访问
   * vue的生命周期 (data => created => mounted => activated => deactivated)
