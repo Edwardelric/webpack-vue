@@ -7,9 +7,9 @@
         <mu-icon value="android"/>
       </li>
     </ul>
-    <section class="list overflow-scroll" @touchstart="touchStart" @touchmove = "touchMove" @touchend= "touchEnd">
+    <section class="list overflow-scroll" @touchstart="touchStart" @touchmove = "touchMove" @touchend= "touchEnd" ref="wrap">
       <section class="dropload-up" ref="droploadUp" :class="{active: !touchData.swipeY}">
-        <img src="../../static/images/common/loading.gif"/>
+        <img src="../../static/images/common/loading.gif" :class="{active: touchData.startLoading}"/>
         <p ref="droploadupText">松开加载</p>
       </section>
       <section v-for="(item, index) in listData" :key="index" class="flex">
@@ -39,7 +39,8 @@
           startX: 0,
           startY: 0,
           swipeX: false,
-          swipeY: false
+          swipeY: false,
+          startLoading: false
         },
         listData: []
       };
@@ -63,6 +64,7 @@
         this.touchData.startY = touch.pageY;
         this.touchData.swipeX = true;
         this.touchData.swipeY = true;
+        this.touchData.startLoading = false;
         this.$refs.droploadupText.innerHTML = '松开加载';
       },
       touchMove(event) {
@@ -73,16 +75,16 @@
         let oldY = this.touchData.startY;
         if (this.touchData.swipeY && window.Math.abs(oldY - curY) - window.Math.abs(oldX - curX) > 0) {
           if (curY - oldY > 10) {
-            console.log(curY - oldY - 44);
             this.$refs.droploadUp.style.height = (curY - oldY - 44) + 'px';
-          } else {
-
+          } else if (curY < oldY) {
+            console.log(this.$refs.wrap.scrollTop);
           }
           event.stopPropagation();
         }
       },
       touchEnd(event) {
         this.touchData.swipeY = false;
+        this.touchData.startLoading = true;
         this.$refs.droploadUp.style.height = 0;
         this.$refs.droploadupText.innerHTML = '加载中';
       }

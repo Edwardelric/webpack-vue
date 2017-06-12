@@ -55,10 +55,14 @@ a {
   background: #ccc;
   text-align: center;
   &.active {
-    transition: height 1.2s;
+    transition: height 0.8s ease-in-out;
   }
   img {
     width: 20px;
+    opacity: 0;
+    &.active {
+      opacity: 1;
+    }
   }
 }
 .btn-style {
