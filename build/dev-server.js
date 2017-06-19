@@ -49,9 +49,12 @@ apiRoutes.get('/ratings', function (req, res) {
 app.use('/api', apiRoutes);
 
 var compiler = webpack(webpackConfig)
-
+console.log(webpackConfig.output.publicPath);
+// webpack-dev-middleware使用compiler对象来对相应的文件进行编译和绑定
+// 编译绑定后将得到的产物存放在内存中而没有写进磁盘
+// 将这个中间件交给express使用之后即可访问这些编译后的产品文件
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
-  publicPath: webpackConfig.output.publicPath,
+  publicPath: webpackConfig.output.publicPath, // /
   stats: {
     colors: true,
     chunks: false
@@ -88,6 +91,7 @@ app.use(hotMiddleware)
 
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
+// /static
 app.use(staticPath, express.static('./static'))
 
 module.exports = app.listen(port, function (err) {
